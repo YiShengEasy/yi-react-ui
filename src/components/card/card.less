@@ -1,0 +1,39 @@
+@prefixCls: yi-card;
+@card-body-font-size:14px;
+@card-border-radius: 4px;
+
+.@{prefixCls} {
+  position: relative;
+  color: #fff;
+  border-radius: @card-border-radius;
+  box-shadow: 0 2px 10px rgba(56, 56, 56, .15);
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
+    &-action {
+      font-size: 16px;
+      display: none;
+    }
+  }
+  &-body {
+    min-height: 100px;
+    font-size: @card-body-font-size;
+  }
+  &-hoverable {
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 7px 21px rgba(56, 56, 56, .15);
+      .@{prefixCls}-header-action {
+        display: inline;
+      }
+    }
+  }
+}
+
+.@{prefixCls}-liner {
+  padding: 8px 16px;
+  border-radius: @card-border-radius;
+  background: linear-gradient(180deg, rgba(56, 56, 56, .3) 0%, rgba(56, 56, 56, 0));
+}
