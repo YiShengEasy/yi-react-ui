@@ -1,8 +1,5 @@
-import Card from './components/card/Card';
-import Icon from './components/icon/Icon';
+import Start from './start'
 
-const yiReactUi={
-  Card,
-  Icon
+export default module={
+    Start
 }
-module.exports =yiReactUi;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import './App.less';
 import Icon from '../../icon/Icon'
 import Card from '../Card'
@@ -13,7 +14,7 @@ class App extends Component {
                         title={'默认样式'}               
                         action={
                             <div onClick={(e) => { e.stopPropagation(); console.log('点击星标') }}>
-                                <Icon type={'star-o'} animation={'turnColor'} animationValue={'yellow'}>
+                                <Icon type={'star-o'} animation={'turnColor'} >
                                 </Icon>
                             </div>}
                     >
@@ -55,5 +56,5 @@ class App extends Component {
         );
     }
 }
-
 export default App;
+
