@@ -1,7 +1,8 @@
 {
   "name": "yi-react-ui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "测试npm",
+  "main": "dist/yi-react-ui.js",
   "files": [
     "dist"
   ],
@@ -33,12 +34,12 @@
     "webpack": "^4.2.0",
     "webpack-dev-server": "^3.1.1",
     "webpack-node-externals": "^1.6.0",
-    "autoprefixer": "^8.2.0"
-  },
-  "dependencies": {
+    "autoprefixer": "^8.2.0",
     "classnames": "^2.2.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "dependencies": {
     "stylelint": "^9.1.3",
     "webpack-cli": "^2.0.12"
   },

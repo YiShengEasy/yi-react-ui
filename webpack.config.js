@@ -7,9 +7,9 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         //打包使用
-        // filename: 'yi-react-ui.js',
-        // library: 'yiReactUI',
-        // libraryTarget: 'commonjs2',
+        filename: 'yi-react-ui.js',
+        library: 'yiReactUI',
+        libraryTarget: 'commonjs2',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
@@ -67,12 +67,12 @@ module.exports = {
         ]
     },
 
-    plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "./index.html"
-        }),
-    ],
+    // plugins: [
+    //     new HtmlWebPackPlugin({
+    //         template: "./src/index.html",
+    //         filename: "./index.html"
+    //     }),
+    // ],
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         compress: true,
