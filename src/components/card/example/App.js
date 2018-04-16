@@ -45,8 +45,7 @@ class App extends Component {
                         backImage={"https://tcs-ga.teambition.net/thumbnail/110z3251840899548ed5f8779ecc5d4afe64/w/600/h/300"}
                         action={
                             <div onClick={(e) => { e.stopPropagation(); console.log('点击星标') }}>
-                                <Icon type={'star-o'} animation={'turnColor'} animationValue={'yellow'}>
-                                </Icon>
+                                <Icon type={'star-o'} animation={'turnColor'} animationValue={'yellow'}/>
                             </div>}
                     >
                         没有鼠标上移
