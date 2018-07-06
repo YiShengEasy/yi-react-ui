@@ -58,15 +58,17 @@ const data = [{
 }]
 
 class ReactTree extends React.PureComponent {
-  render() {
-    return (
-      <div style={{overflowX: 'auto', display: 'flex', justifyContent: 'center'}}>
-        <Tree data={data}
-              nodeHeight={60}
-              hoveNode={(value, id) => (<EditNode value={value} id={id}/>)}/>
-      </div>
-    )
-  }
+    render() {
+        return (
+            <div style={{overflowX: 'auto', display: 'flex', justifyContent: 'center'}}>
+                <Tree data={data}
+                      nodeHeight={60}
+                      unExpandImg={img2}
+                      expandImg={img}
+                      hoveNode={(value, id,record) => (<EditNode value={value} id={id} record={record}/>)}/>
+            </div>
+        )
+    }
 };
 
 export default ReactTree;

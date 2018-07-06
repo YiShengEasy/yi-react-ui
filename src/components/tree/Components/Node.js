@@ -20,11 +20,13 @@ class Node extends React.PureComponent {
     nodeStyle:PropTypes.object,
     expandImg:PropTypes.any,
     unExpandImg:PropTypes.any,
+    record:PropTypes.object
   };
   static defaultProps = {
     nodeType: 'common', // common,root,leaf
     defaultExpand: true,
     value: '',
+    record:{}
   };
 
   constructor(props) {
@@ -40,11 +42,11 @@ class Node extends React.PureComponent {
   }
 
   render() {
-    const {value, children, nodeType, hoveNode, height, id, contentStyle, rowStyle,nodeStyle,
+    const {value,record, children, nodeType, hoveNode, height, id, contentStyle, rowStyle,nodeStyle,
       expandImg,unExpandImg} = this.props;
     const {isHove, isExpand} = this.state;
     // 自定义编辑区域
-    const editRender = isHove ? hoveNode(value, id) : ''
+    const editRender = isHove ? hoveNode(value, id,record) : ''
     const expandRender =
       nodeType !== 'leaf' ?
         <img className={`yi-expand-img`}

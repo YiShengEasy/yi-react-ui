@@ -17,7 +17,7 @@ class Tree extends React.PureComponent {
   static defaultProps = {
     data: []
   };
-  static Node=Node;
+
   constructor(props) {
     super(props);
     this.nodeType='root';
@@ -26,14 +26,16 @@ class Tree extends React.PureComponent {
 
   // 渲染节点
   renderChildTree = (data) => {
-    const {nodeHeight,hoveNode}=this.props;
+    const {nodeHeight,hoveNode,...res}=this.props;
     return data.map(item => {
       const nodeProps = {
         value: item.value,
         id:item.id,
         nodeType:this.nodeType,
         height:nodeHeight,
-        hoveNode
+        hoveNode,
+        record:item,
+        ...res
       }
       this.nodeType = 'common';
       if (!item.children) {
