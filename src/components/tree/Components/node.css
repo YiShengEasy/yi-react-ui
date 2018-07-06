@@ -1,0 +1,90 @@
+.yi-treeNode{
+  padding:20px 10px;
+  margin: 0 10px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction:column
+}
+.yi-treeNode-common::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 2px;
+  background: #888888;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+}
+.yi-treeNode-root::before{
+  content: '';
+  position: absolute;
+  height: 50%;
+  width: 2px;
+  background: #888888;
+  transform: translateX(-50%);
+  z-index: -1;
+  left: 50%;
+  bottom: 0;
+}
+.yi-treeNode-leaf::before{
+  content: '';
+  position: absolute;
+  height: 50%;
+  width: 2px;
+  background: #888888;
+  transform: translateX(-50%);
+  left: 50%;
+  top: 0;
+  z-index: -1;
+}
+
+.yi-tree-row{
+  position: relative;
+}
+.yi-tree-row::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  height: 2px;
+  width: 100%;
+  transform: translateY(-50%);
+  background: #888888;
+  left: 0;
+  top: 0;
+}
+.yi-tree-row:last-child::before{
+  width: 50%;
+}
+.yi-tree-row:first-child::before{
+  width: 50%;
+  left: 50%;
+}
+.yi-tree-row:only-child::before{
+  width: 0;
+}
+
+.yi-nodeContent{
+  min-width: 80px;
+  max-width: 160px;
+  height: 60px;
+  background: #e7edff;
+  border: #000 1px solid;
+  text-align: center;
+  line-height: 60px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+.yi-expand-img{
+  position: absolute;
+  padding: 0;
+  margin:0;
+  left: 50%;
+  top: 100%;
+  z-index: 2;
+  transform: translate(-50%,-50%);
+}

@@ -63,7 +63,18 @@ module.exports = {
                     'less-loader'
                 ]
             },
+            {
+                test: /\.(png|jpg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: '1024'
+                        }
+                    }
+                ]
 
+            }
         ]
     },
 
