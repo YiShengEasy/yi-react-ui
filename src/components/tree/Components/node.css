@@ -66,6 +66,7 @@
 }
 
 .yi-nodeContent{
+  position: relative;
   min-width: 80px;
   max-width: 160px;
   height: 60px;
@@ -88,6 +89,7 @@
   z-index: 2;
   transform: translate(-50%,-50%);
 }
+
 .tagRender{
   position: absolute;
   background: #0077aa;
