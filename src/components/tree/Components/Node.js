@@ -9,72 +9,82 @@ import './node.css'
 
 
 class Node extends React.PureComponent {
-  static propTypes = {
-    hasChild: PropTypes.bool, //是否有子节点
-    defaultExpand: PropTypes.bool,  //是否展开
-    value: PropTypes.string,
-    nodeType: PropTypes.string,
-    expandChange: PropTypes.func,
-    contentStyle:PropTypes.object,
-    rowStyle:PropTypes.object,
-    nodeStyle:PropTypes.object,
-    expandImg:PropTypes.any,
-    unExpandImg:PropTypes.any,
-    record:PropTypes.object
-  };
-  static defaultProps = {
-    nodeType: 'common', // common,root,leaf
-    defaultExpand: true,
-    value: '',
-    record:{}
-  };
+    static propTypes = {
+        hasChild: PropTypes.bool, //是否有子节点
+        defaultExpand: PropTypes.bool,  //是否展开
+        value: PropTypes.string,
+        nodeType: PropTypes.string,
+        expandChange: PropTypes.func,
+        contentStyle: PropTypes.object,
+        rowStyle: PropTypes.object,
+        nodeStyle: PropTypes.object,
+        expandImg: PropTypes.any,
+        unExpandImg: PropTypes.any,
+        record: PropTypes.object,
+        isTag: PropTypes.bool,
+    };
+    static defaultProps = {
+        nodeType: 'common', // common,root,leaf
+        defaultExpand: true,
+        value: '',
+        record: {}
+    };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isExpand: props.defaultExpand,
-      isHove: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            isExpand: props.defaultExpand,
+            isHove: false
+        }
     }
-  }
 
-  handleExpandChange() {
-    this.setState({isExpand: !this.state.isExpand})
-  }
+    handleExpandChange() {
+        this.setState({isExpand: !this.state.isExpand})
+    }
 
-  render() {
-    const {value,record, children, nodeType, hoveNode, height, id, contentStyle, rowStyle,nodeStyle,
-      expandImg,unExpandImg} = this.props;
-    const {isHove, isExpand} = this.state;
-    // 自定义编辑区域
-    const editRender = isHove ? hoveNode(value, id,record) : ''
-    const expandRender =
-      nodeType !== 'leaf' ?
-        <img className={`yi-expand-img`}
-             alt={isExpand?'收缩':'展开'}
-             width={30} src={isExpand ? (unExpandImg||reduce) : (expandImg||plus)} onClick={this.handleExpandChange.bind(this)}/>
-        : ''
-    return (
-      <div className={`yi-tree-row`} style={rowStyle}>
-        <div className={`yi-treeNode yi-treeNode-${nodeType}`}
-             style={nodeStyle}
-             onMouseMove={() => this.setState({isHove: true})}
-             onMouseLeave={() => this.setState({isHove: false})}>
-          <div className={'yi-nodeContent'} style={{height, lineHeight: `${height}px`, ...contentStyle}}>
-            {value}
-          </div>
-          {
-            expandRender
-          }
-          {
-            editRender
-          }
-        </div>
-        <div style={{display: 'flex'}}>
-          {this.state.isExpand ? children : ''}
-        </div>
-      </div>
-    )
-  }
+    render() {
+        const {
+            value, record, children, nodeType, isTag, tagColor, hoveNode, height, id, contentStyle, rowStyle, nodeStyle,
+            expandImg, unExpandImg,tagParam
+        } = this.props;
+        const {isHove, isExpand} = this.state;
+        // 自定义编辑区域
+        const tagRender=tagParam &&record[tagParam]?<div className={'tagRender'}>{record[tagParam]}</div>:null;
+        const editRender = isHove ? hoveNode(value, id, record) : '';
+        const expandRender =
+            nodeType !== 'leaf' ?
+                <img className={`yi-expand-img`}
+                     alt={isExpand ? '收缩' : '展开'}
+                     width={30} src={isExpand ? (unExpandImg || reduce) : (expandImg || plus)}
+                     onClick={this.handleExpandChange.bind(this)}/>
+                : ''
+        return (
+            <div className={`yi-tree-row`} style={rowStyle}>
+                <div className={`yi-treeNode yi-treeNode-${nodeType}`}
+                     style={nodeStyle}
+                     onMouseMove={() => this.setState({isHove: true})}
+                     onMouseLeave={() => this.setState({isHove: false})}>
+                    <div className={'yi-nodeContent'} style={{
+                        height,
+                        lineHeight: `${height}px`, ...contentStyle,
+                        background: isTag ? tagColor||'#FFDC35' : ''
+                    }}>
+                        {value}
+                        {tagRender}
+                    </div>
+                    {
+                        expandRender
+                    }
+                    {
+                        editRender
+                    }
+                </div>
+                <div style={{display: 'flex'}}>
+                    {this.state.isExpand ? children : ''}
+                </div>
+            </div>
+        )
+    }
 }
 
 export default Node

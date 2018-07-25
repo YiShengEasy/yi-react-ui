@@ -88,3 +88,14 @@
   z-index: 2;
   transform: translate(-50%,-50%);
 }
+.tagRender{
+  position: absolute;
+  background: #0077aa;
+  border-radius: 10px;
+  color: #eff3f6;
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+  left:0;
+  top:0;
+}
