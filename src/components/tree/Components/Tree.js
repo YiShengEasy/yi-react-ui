@@ -10,11 +10,11 @@ class Tree extends React.PureComponent {
         data: PropTypes.array,
         contentStyle: PropTypes.object,
         rowStyle: PropTypes.object,
-        style: PropTypes.object,
         nodeStyle: PropTypes.object,
+        style: PropTypes.object,
         expandImg: PropTypes.any,
         unExpandImg: PropTypes.any,
-        tagColor:PropTypes.string,
+        tagColor: PropTypes.string,
     };
     static defaultProps = {
         data: []
@@ -28,16 +28,14 @@ class Tree extends React.PureComponent {
 
     // 渲染节点
     renderChildTree = (data) => {
-        const {nodeHeight, hoveNode,style, ...res} = this.props;
+        const {nodeHeight, hoveNode, style, ...res} = this.props;
         return data.map(item => {
             const nodeProps = {
-                value: item.value,
-                id: item.id,
                 nodeType: this.nodeType,
                 height: nodeHeight,
                 hoveNode,
                 record: item,
-                isTag:item.isTag,
+                ...item,
                 ...res
             }
             this.nodeType = 'common';
@@ -57,10 +55,10 @@ class Tree extends React.PureComponent {
 
 
     render() {
-        const {data,style} = this.props;
+        const {data, style} = this.props;
         this.nodeType = 'root';
         return (
-            <div style={{display: 'flex', overflowX: 'auto', padding: 20,...style}}>
+            <div style={{display: 'flex', overflowX: 'auto', padding: 20, ...style}}>
                 {data ? this.renderChildTree(data) : ''}
             </div>
         )
